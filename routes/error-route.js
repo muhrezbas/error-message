@@ -1,0 +1,13 @@
+const express = require("express")
+const router = express.Router()
+const errorController = require("../controllers/error-controller")
+const authenticate = require('../middlewares/authenticate')
+const authorizations = require('../middlewares/authorizations')
+router.use(authenticate)
+router.post("/cost", errorController.cost)
+router.post("/document", errorController.dokumen)
+router.post("/bibite-user", errorController.bibiteUser)
+router.post("/admin", errorController.bibiteAdmin)
+router.post("/grup-user", errorController.grupUser)
+router.post("/promo", errorController.promo)
+module.exports = router
