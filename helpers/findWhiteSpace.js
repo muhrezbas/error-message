@@ -1,6 +1,6 @@
 function whiteSpace(data) {
     let regex = /\s/g
-    console.log(data)
+    // console.log(data)
     if (data == null || data == undefined) {
         return ""
     }

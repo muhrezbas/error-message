@@ -157,42 +157,42 @@ class ControllerTodo {
             obj.err_crtbbt_accusr_phone.push('Nomer telepon harus lebih dari 3 karakter')
         }
         async function getData() {
-                const axios = require('axios');
-                var instance = axios.create({});
-                return await instance.get(`https://go-restapi-bit-development.herokuapp.com/web-bibite/v-0.6/master/bibite-users`)
-                    .then(({
-                        data
-                    }) => {
+            const axios = require('axios');
+            var instance = axios.create({});
+            return await instance.get(`https://go-restapi-bit-development.herokuapp.com/web-bibite/v-0.6/master/bibite-users`)
+                .then(({
+                    data
+                }) => {
 
-                        const result = data.data.find(({
-                            bbt_username
-                        }) => bbt_username === bbt_user_temp_username);
+                    const result = data.data.find(({
+                        bbt_username
+                    }) => bbt_username === bbt_user_temp_username);
 
-                        if (result == undefined) {
-                            return false
-                        } else {
-                            return true
-                        }
-
-                        // res.status(200).json(data)
-                    })
-                    .catch(next)
-            }
-            (async () => {
-
-                if (await getData() == true) {
-                    if (obj.err_crtbbt_accusr_username == undefined) {
-                        obj.err_crtbbt_accusr_username = []
+                    if (result == undefined) {
+                        return false
+                    } else {
+                        return true
                     }
-                    obj.err_crtbbt_accusr_username.push('Username sudah terdaftar')
-                }
 
-                if (obj.err_crtbbt_accusr_password !== undefined || obj.err_crtbbt_accusr_fullname !== undefined || obj.err_crtbbt_accusr_grup_user !== undefined || obj.err_crtbbt_accusr_alamat !== undefined || obj.err_crtbbt_accusr_username !== undefined || obj.err_crtbbt_accusr_phone !== undefined || obj.err_crtbbt_accusr_gender !== undefined) {
-                    res.status(400).json(obj)
-                } else {
-                    res.send('sukses')
+                    // res.status(200).json(data)
+                })
+                .catch(next)
+        }
+        (async () => {
+
+            if (await getData() == true) {
+                if (obj.err_crtbbt_accusr_username == undefined) {
+                    obj.err_crtbbt_accusr_username = []
                 }
-            })()
+                obj.err_crtbbt_accusr_username.push('Username sudah terdaftar')
+            }
+
+            if (obj.err_crtbbt_accusr_password !== undefined || obj.err_crtbbt_accusr_fullname !== undefined || obj.err_crtbbt_accusr_grup_user !== undefined || obj.err_crtbbt_accusr_alamat !== undefined || obj.err_crtbbt_accusr_username !== undefined || obj.err_crtbbt_accusr_phone !== undefined || obj.err_crtbbt_accusr_gender !== undefined) {
+                res.status(400).json(obj)
+            } else {
+                res.send('sukses')
+            }
+        })()
     }
     static bibiteAdmin(req, res, next) {
 
@@ -282,43 +282,43 @@ class ControllerTodo {
             obj.err_crtbbt_admin_phone.push('Nomer telepon harus lebih dari 3 karakter')
         }
         async function getData() {
-                const axios = require('axios');
-                var instance = axios.create({});
-                return await instance.get(`https://go-restapi-bit-development.herokuapp.com/web-bibite/v-0.6/master/bibite-adms`)
-                    .then(({
-                        data
-                    }) => {
+            const axios = require('axios');
+            var instance = axios.create({});
+            return await instance.get(`https://go-restapi-bit-development.herokuapp.com/web-bibite/v-0.6/master/bibite-adms`)
+                .then(({
+                    data
+                }) => {
 
 
-                        const result = data.data.find(({
-                            bbt_adm_username
-                        }) => bbt_adm_username === bbt_adm_temp_username);
+                    const result = data.data.find(({
+                        bbt_adm_username
+                    }) => bbt_adm_username === bbt_adm_temp_username);
 
-                        if (result == undefined) {
-                            return false
-                        } else {
-                            return true
-                        }
-
-                        // res.status(200).json(data)
-                    })
-                    .catch(next)
-            }
-            (async () => {
-
-                if (await getData() == true) {
-                    if (obj.err_crtbbt_admin_username == undefined) {
-                        obj.err_crtbbt_admin_username = []
+                    if (result == undefined) {
+                        return false
+                    } else {
+                        return true
                     }
-                    obj.err_crtbbt_admin_username.push('Username sudah terdaftar')
-                }
 
-                if (obj.err_crtbbt_admin_password !== undefined || obj.err_crtbbt_admin_fullname !== undefined || obj.err_crtbbt_admin_grup_user !== undefined || obj.err_crtbbt_admin_alamat !== undefined || obj.err_crtbbt_admin_username !== undefined || obj.err_crtbbt_admin_phone !== undefined || obj.err_crtbbt_admin_gender !== undefined) {
-                    res.status(400).json(obj)
-                } else {
-                    res.send('sukses')
+                    // res.status(200).json(data)
+                })
+                .catch(next)
+        }
+        (async () => {
+
+            if (await getData() == true) {
+                if (obj.err_crtbbt_admin_username == undefined) {
+                    obj.err_crtbbt_admin_username = []
                 }
-            })()
+                obj.err_crtbbt_admin_username.push('Username sudah terdaftar')
+            }
+
+            if (obj.err_crtbbt_admin_password !== undefined || obj.err_crtbbt_admin_fullname !== undefined || obj.err_crtbbt_admin_grup_user !== undefined || obj.err_crtbbt_admin_alamat !== undefined || obj.err_crtbbt_admin_username !== undefined || obj.err_crtbbt_admin_phone !== undefined || obj.err_crtbbt_admin_gender !== undefined) {
+                res.status(400).json(obj)
+            } else {
+                res.send('sukses')
+            }
+        })()
     }
     static grupUser(req, res, next) {
         const {
@@ -387,13 +387,19 @@ class ControllerTodo {
             referal_temp_quota
         } = req.body
         let obj = {}
+        console.log(Number(referal_temp_image))
+        if (Number(referal_temp_image) > 10000000) {
+            if (obj.err_crtbbt_promo_img == undefined) {
+                obj.err_crtbbt_promo_img = []
+            }
+            obj.err_crtbbt_promo_img.push('Ukuran file lebih dari 10 MB')
+        }
         if (!Whitespace(referal_temp_image).length) {
             if (obj.err_crtbbt_promo_img == undefined) {
                 obj.err_crtbbt_promo_img = []
             }
             obj.err_crtbbt_promo_img.push('Gambah Promo tidak boleh kosong')
         }
-        console.log(referal_temp_image, "image")
         if (!Whitespace(referal_temp_name).length) {
             if (obj.err_crtbbt_promo_nama == undefined) {
                 obj.err_crtbbt_promo_nama = []
